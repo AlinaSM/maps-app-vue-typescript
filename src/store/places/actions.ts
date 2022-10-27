@@ -8,7 +8,7 @@ const actions: ActionTree<PlacesState, StateInterface> = {
         // TODO: implement loading
         navigator.geolocation.getCurrentPosition(
             //(position) => commmit('setLngLat', position.coords ) this is without destructuring 
-            ({coords}) => commit('setLngLat', coords ),
+            ({coords}) => commit('setLngLat', {lng : coords.longitude , lat : coords.latitude } ),
             ( err ) => {
                 console.error(err)
                 throw new Error('No hay geolocalización :(')
