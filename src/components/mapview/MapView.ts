@@ -27,11 +27,25 @@ export default defineComponent({
 
             const map = new Mapboxgl.Map({
                 container: mapElement.value, // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                style: 'mapbox://styles/mapbox/light-v10', // style URL
                 center: userLocation.value, // starting position [lng, lat]
                 zoom: 9, // starting zoom
-                //projection: 'globe' // display the map as a 3D globe
             });
+
+
+            const myLocationPopup = new Mapboxgl.Popup({ closeOnClick: false, offset : [0, -15] })
+            .setLngLat(userLocation.value)
+            .setHTML(`
+                <h4>Estas aqui!!!</h4>
+                <p>Estas son las coordenadas: ${ userLocation.value }</p>
+            `);
+
+            const myLocationMarker = new Mapboxgl.Marker({color : 'black'})
+            .setLngLat( userLocation.value )
+            .setPopup(myLocationPopup)
+            .addTo(map);
+
+
         }
 
         return {
