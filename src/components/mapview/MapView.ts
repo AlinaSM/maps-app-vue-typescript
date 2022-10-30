@@ -45,6 +45,8 @@ export default defineComponent({
             .setPopup(myLocationPopup)
             .addTo(map);
 
+            //TODO: set map on Vuex
+
 
         }
 
