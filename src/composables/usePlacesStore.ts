@@ -13,13 +13,14 @@ export const usePlacesStore = () => {
 
     return {
         //State
-        isLoading : computed(() => {  return store.state.places.isLoading }),
-        userLocation : computed(() => { return store.state.places.userLocation }),
+        isLoading: computed(() => {  return store.state.places.isLoading }),
+        userLocation: computed(() => { return store.state.places.userLocation }),
     
         //Getters
-        isUserLocationReady : computed<boolean>(() => { return store.getters['places/isUserLocationReady'] }),
+        isUserLocationReady: computed<boolean>(() => { return store.getters['places/isUserLocationReady'] }),
 
         //Actions
+        searchPlacesByTerm: ( query = '' ) => { store.dispatch('places/searchPlacesByTerm', query) },
 
         //Mutations
 
